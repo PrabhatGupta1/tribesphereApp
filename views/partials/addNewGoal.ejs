@@ -1,0 +1,34 @@
+ <!-- add goals -->
+      <!-- Modal -->
+      <div class="modal fade" id="addGoal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Goals</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/add-new-goal" method="post">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="new_goal" class="form-label">Add New Goal</label>
+                  <input type="text" class="form-control" id="new_goal" name="new_goal" placeholder="" list="goal-suggestions">
+                  <datalist id="goal-suggestions">
+                    <% if(locals.goals) { %>
+                      <%  for(let i=0;i<goals.length;i++) { %>
+                          <option value="<%= goals[i].goal %>">
+                      <% } %>  
+                    <% } %>
+                  </datalist>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Describe Your Goal</label>
+                  <textarea class="form-control" id="description" name="description" rows="3" placeholder="comment on your this new passion..."></textarea>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

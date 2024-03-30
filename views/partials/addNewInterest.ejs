@@ -1,0 +1,36 @@
+
+      <!-- add interests -->
+      <!-- Modal -->
+      <div class="modal fade" id="addInterest" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Interests</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/add-new" method="post">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="new_passion" class="form-label">Add New Interest</label>
+                  <input type="text" class="form-control" id="new_passion" name="new_passion" placeholder="" list="interest-suggestions">
+                  <datalist id="interest-suggestions">
+                    <% if(locals.interests) { %>
+                      <%  for(let i=0;i<interests.length;i++) { %>
+                          <option value="<%= interests[i].interest %>">
+                      <% } %>  
+                    <% } %>
+                  </datalist>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Add description</label>
+                  <textarea class="form-control" id="description" name="description" rows="3" placeholder="comment on your this new passion..."></textarea>
+                  <input type="hidden" name="passion" value="interest">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

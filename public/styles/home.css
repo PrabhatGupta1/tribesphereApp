@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins',sans-serif;
+}
+
+nav {
+    background-color: rgb(128, 0, 115);
+    position: sticky;z-index: 200;top: 0px;
+}
+
+.left-sidebar {
+    position: sticky;
+    /* padding: 20px 10%; */
+}
+
+.tribeSphere-heading {
+    /* font-family: 'Great Vibes', cursive; */
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    padding-top: 5px;
+    color: rgb(255, 255, 255);
+    font-family: 'Satisfy', cursive;
+}
+
+.profile-summary {
+   text-align: center;
+   border-bottom: 1px solid rgb(225, 218, 218);
+}
+
+#cover {
+    width: 100%;
+    height: 70px;
+    position: relative;
+}
+
+#profile-pic {
+    width: 70px;
+    border-radius: 50%;
+    margin-top: 20px;
+}
+
+.user-name,.tribe-name {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 18px ;
+    font-weight: 550;
+    margin: 0;
+}
+.bio , .tribe-headline,.user-headline{
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+    font-weight: 550;
+    opacity: 65%;
+    padding: 0 5%;
+    margin: 0;
+}
+.connection-count {
+    color: rgb(128, 0, 115);
+    font-family: 'Montserrat';
+    font-weight: 800;
+    font-size: medium;
+}
+
+.quick-links {
+    font-family: 'Lato';
+    padding-left: 10%;
+}
+
+.heading {
+    font-weight: 550;
+}
+
+.quick-links p img {
+    width: 35px;
+    margin:0px 10px;
+}
+
+.links{
+    color: #302e2e; 
+} 
+
+a:link {
+    text-decoration:none;
+}
+
+.tribes,.user {
+    border-bottom: 1px solid rgb(208, 202, 202);
+}
+
+.tribes img,.user img {
+    width: 50px;
+    float: left;
+    border-radius: 50%;
+    margin:2px 9px 40px 0px;
+}
+
+.members,.connections {
+    font-family: Arial, Helvetica;
+    font-size: 14px;
+    font-weight: 200;
+    margin: 5px 0px;
+}
+
+.request-button {
+    height: 35px;
+    border: 1px solid rgb(128, 0, 115) ;
+    color: rgb(128, 0, 115);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+    font-size: 18px;
+    font-weight: 800;
+    padding: 5px 20px;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+}
+
+.request-button:hover {
+    background: rgb(232, 223, 232);
+    border: 2px solid rgb(128, 0, 115) ;
+}
+
+.show-more {
+    background-color: #f0eded;
+    border-radius: 0px 0px 9px 9px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+    font-size: 15px;
+    font-weight: 200;
+    padding: 4px;
+    text-align: center;
+}
+
+.user-info {
+    padding: 9px 0px;
+}
+
+.user-info img{
+    height: 45px;
+    width: 45px;
+    float: left;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post {
+    padding:1rem 20px;
+    margin-top: 1rem;
+    /* background-color:#f0eded; */
+    border-radius: 20px;
+    border-bottom: 1px solid rgb(208, 202, 202);
+    border-top: 1px solid rgb(208, 202, 202);
+}
+
+.user-info p {
+    display: inline-block;
+    padding-top: 9px;
+}
+
+.user-post {
+    margin: 9px 0;
+    height: 465px;
+}
+
+.user-post img {
+    width: 100%;
+    height: 100%;
+}
+
+/* comment-section */
+
+.comment-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comment-field {
+    
+    height: 40px;
+    width: 80%;
+   
+}
+
+.comment-field input {
+    height: 40px;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    font-weight:100;
+}
+
+.add { 
+    height: 40px;
+}
+
+.add input {
+    height: 40px;
+    width: 40px;
+    margin-right: 9px;
+    background: none;
+    color: rgb(128, 0, 115) ;
+    border: none;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+.hide {
+    visibility: hidden;
+}
+
+
+/* Customizing Profile of the user */
+
+.profile {
+    
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 150px;
+}
+
+.banner {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-picture {
+    position: absolute;
+    top: 90%;
+    left: 17%;
+    transform: translate(-50%, -50%);
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+.name {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 25px ;
+    font-weight: 550;
+    margin: 0;
+    color: rgb(128, 0, 115);
+}
+
+.profile-bio {
+    padding: 0 20% 0 0 ;
+}
+
+.profile-info {
+    padding: 0 5%;
+}
+
+
+
+.quality {
+    padding: 0 20px;
+}
+
+.quality-header {
+    background-color: rgb(230, 216, 228);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.quality-heading {
+    padding: 10px 20px 0px 20px;
+    color: rgb(128, 0, 115);
+}
+
+
+.add-more {
+    background: none;
+    border: none;
+    height: 65px;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 0 22px;
+}
+
+
+.bg {
+    background-color:rgb(128, 0, 115);
+}
+
+.edit {
+    float: right;
+    margin: 20px;
+}
+
+@media (max-width:700px) {
+    .post {
+        margin-top: 0;
+        padding: 0;
+        padding-top: 1rem;
+        border-radius: 0px;
+        border-bottom: 0px solid rgb(208, 202, 202);
+        border-top: 0px solid rgb(208, 202, 202);
+    }
+
+    .user-info,.post-interaction,.caption,.comment-input {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    .quick-links {
+        border-bottom: 1px solid rgb(225, 218, 218);
+    }
+
+    .user-post {
+        margin: 9px 0;
+        height: 360px;
+    }
+
+    .profile-picture {
+        left: 25%;
+    }
+}

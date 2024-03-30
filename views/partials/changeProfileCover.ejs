@@ -1,0 +1,33 @@
+<!-- change profile cover model -->
+
+<div class="modal fade" id="profileCover" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Hello, <%= user.fullname %>! Welcome to TribeSphere.</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/upload-profile-cover" enctype="multipart/form-data" method="post">
+          <div class="modal-body">
+            <h3>Add Profile Cover</h3>
+            <p>Upload a profile cover that reflects your essence.</p>
+            <div class="text-center py-3">
+              <% if(user.profile_cover_url) {%>
+              <img id="profile-cover-photo" src="uploads/<%= user.profile_cover_url %>" style="height:150px ; width:90%;" class="text-center" alt="default-profile-pic">
+              <% } else {%>
+              <img id="profile-cover-photo" src="images/banner.jpeg" style="height:150px ; width:90%;" class="text-center" alt="default-profile-pic">
+              <% } %>
+            </div>
+            <div class="text-center py-2">
+              <input style="display: none;" type="file" id="profile-cover" name="profile-cover" onchange="previewImage('profile-cover','profile-cover-photo')">
+              <button class="signup-btn" style="width: 20%; margin-left: 40%;" type="button"><label for="profile-cover">Select</label></button>
+            </div>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

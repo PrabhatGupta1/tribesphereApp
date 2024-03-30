@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile-<%= user.username %></title>
+    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/bootstrap.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+      @media (max-width:700px) {
+        .row>* {
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+      }
+    </style>
+</head>
+<body>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Left sidebar -->
+          <div class="col-sm-3 px-3 pt-2 left-sidebar">
+            <div>
+              <h1 class="tribeSphere-heading">TribeSphere</h1>
+            </div>
+            <div class="quick-links py-3">
+              <p class="heading">Quick Links</p>
+              <a class="links" href="/home"><p><img src="images/home.png" alt=""> Home</p></a>
+              <a class="links" href=""><p><img src="images/my-profile.jpg" alt=""> Edit Profile</p></a>
+              <a class="links" href=""><p><img src="images/communities-icon.jpg" alt=""> Communities</p></a>
+              <a class="links" href=""><p><img src="images/events-icon.png" alt=""> Events</p></a>
+              <a class="links" href=""><p><img src="images/notifications-icon.png" alt=""> Notifications</p></a>
+              <a class="links" href=""><p><img src="images/settings.png" alt=""> Settings</p></a>
+              <a class="links" href="/logout"><p><img src="images/logout.png" alt=""> Logout</p></a>
+            </div>
+          </div>
+          <!-- Main content -->
+          <div class="col-sm-6 main-content">
+            <% if(locals.user) {%>
+            <div class="profile">
+                <div class="banner-container">
+                    <% if(user.profile_cover_url) {%>
+                    <a href="" data-bs-toggle="modal" data-bs-target=<%= isOriginalUser?"#profileCover":null %>><img class="banner" src="uploads/<%= user.profile_cover_url %>" alt="Banner Image"></a>
+                    <% } else {%>
+                    <a href="" data-bs-toggle="modal" data-bs-target=<%= isOriginalUser?"#profileCover":null %>><img class="banner" src="images/banner.jpeg" alt="Banner Image"></a>
+                    <% } %>
+                    <% if(user.profile_pic_url) {%>
+                    <a href="" data-bs-toggle="modal" data-bs-target=<%= isOriginalUser?"#profilePicture":null %>><img class="profile-picture" src="uploads/<%= user.profile_pic_url %>" alt="Profile Picture"></a>
+                    <% } else {%>
+                    <a href="" data-bs-toggle="modal" data-bs-target=<%= isOriginalUser?"#profilePicture":null %>><img class="profile-picture" src="images/profile-img.png" alt="Profile Picture"></a>
+                    <% } %>
+                    <% if(isOriginalUser){%>
+                    <a href="" data-bs-toggle="modal" data-bs-target="#edit-profile"><img class="edit" width="30px" src="images/edit.png" alt=""></a>
+                    <% } %>
+                  </div>
+                <div class="profile-info mt-5 pt-2">
+                    <p class="name"><%= user.fullname %></p>
+                    <p class="user-name">@<%= user.username %></p>
+                    <p class="bio profile-bio"><%= user.bio %></p>
+                    <p class="connection-count"><%= connectionCount.count %> Connections</p>
+                </div>
+                <% } %>
+                <!-- hobbies -->
+                <div class="mt-5 quality">
+                  <div class="quality-header">
+                    <div class="quality-heading"><h4>Hobbies</h4></div>
+                    <% if(isOriginalUser) {%>
+                      <div><button data-bs-toggle="modal" data-bs-target="#addHobby" class="add-more" type="button">+</button></div>
+                    <% } %>
+                  </div>
+                  <ol class="list-group list-group-numbered">
+                    <% if(locals.userHobbies && userHobbies.length>0) { %>
+                      <% for(let i=0;i<userHobbies.length;i++){ %>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold"><%= userHobbies[i].hobby %></div>
+                            <%= userHobbies[i].description %>
+                          </div>
+                          <span class="badge bg rounded-pill">10</span>
+                        </li>
+                      <% } %>
+                    <% } else {%>
+                      <li class="text-center border rounded py-2"><%= isOriginalUser?"Hobbies you add will show here.":"No Hobbies"%></li>
+                    <% } %>
+                  </ol>
+                </div>   
+
+                <!-- Interests -->
+                <div class="mt-5 quality">
+                  <div class="quality-header">
+                    <div class="quality-heading"><h4>Interests</h4></div>
+                    <%- isOriginalUser? '<div><button data-bs-toggle="modal" data-bs-target="#addInterest" class="add-more" type="button">+</button></div>': null %>
+                  </div>
+                  
+                  <ol class="list-group list-group-numbered">
+                    <% if(locals.userInterests && userInterests.length>0) { %>
+                      <% for(let i=0;i<userInterests.length;i++){ %>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold"><%= userInterests[i].interest %></div>
+                            <%= userInterests[i].description %>
+                          </div>
+                          <span class="badge bg rounded-pill">10</span>
+                        </li>
+                      <% } %>
+                    <% } else {%>
+                      <li class="text-center border rounded py-2"><%= isOriginalUser?"Interests you add will show here.":"No Interests" %></li>
+                    <% } %>
+                  </ol>
+                </div>  
+                
+                <!-- Goals -->
+                <div class="mt-5 quality">
+                  <div class="quality-header">
+                    <div class="quality-heading"><h4>Goals</h4></div>
+                    <%- isOriginalUser? '<div><button data-bs-toggle="modal" data-bs-target="#addGoal" class="add-more" type="button">+</button></div>':null %>
+                  </div>
+                  
+                  <ol class="list-group list-group-numbered">
+                    <% if(locals.userGoals && userGoals.length>0) { %>
+                      <% for(let i=0;i<userGoals.length;i++){ %>
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold"><%= userGoals[i].goal_title %></div>
+                            <%= userGoals[i].goal_description %>
+                          </div>
+                          <span class="badge bg rounded-pill">10</span>
+                        </li>
+                      <% } %>
+                    <% } else {%>
+                      <li class="text-center border rounded py-2"><%= isOriginalUser?"Goals you add will show here.":"No Goals" %></li>
+                    <% } %>
+                  </ol>
+                </div>   
+            </div>
+          </div>
+
+          
+          <!-- Right sidebar -->
+          <div class="col-sm-3 px-3 pt-1 right-sidebar">
+            <% if(connectionRequests.length>0) { %>
+               <%- include("partials/connectionRequests.ejs") %> 
+            <% } %>       
+            <%- include("partials/userConnections.ejs") %>
+            <% if(pendingConnections.length>0) { %>
+              <%- include("partials/pendingConnections.ejs") %>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <%- include("partials/changeProfilePic.ejs") %>
+      <%- include("partials/changeProfileCover.ejs") %>
+      <%- include("partials/editProfile.ejs") %>
+      
+    <%- include("partials/addNewHobby.ejs") %>
+    <%- include("partials/addNewInterest.ejs") %>
+    <%- include("partials/addNewGoal.ejs") %>
+    <div class="py-5"></div>
+<%- include("partials/footer.ejs") %> 

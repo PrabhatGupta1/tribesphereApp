@@ -1,0 +1,32 @@
+<!-- User connections -->
+<div class="suggested-connections pt-3">
+    <p class="heading pb-0 mb-0">Your Connections</p>
+    <% if(locals.userConnections && userConnections.length>0) { %>
+      <% for(let i=0;i<userConnections.length;i++) {%>
+        <%let bio = userConnections[i].bio ; 
+          let profilePicUrl = userConnections[i].profile_pic_url;
+          if(!profilePicUrl) {
+            profilePicUrl = "images/blank-profile-picture.png";
+          } else {
+            profilePicUrl = "uploads/"+profilePicUrl;
+          }
+          if(bio) {
+            if(bio.length>60) {
+              bio = bio.slice(0,60)+" . . .";
+            } 
+          } 
+        %>
+        <div class="user py-3">
+          <a href="profile?user=<%= userConnections[i].username %>"><img src="<%= profilePicUrl %>" alt=""></a>
+          <p class="user-name"><%= userConnections[i].fullname %></p>
+          <p class="user-headline pb-2"><%= bio %></p>
+          <button class="rounded request-button message-btn" data-connection-id="<%= userConnections[i].username %>" name="<%= userConnections[i].username %>" type="button">Message</button>
+        </div>
+      <% } %>
+    <% } else { %>
+      <div class="user py-3">
+        <p class="mx-3">Your connections will show here</p>
+      </div>
+    <% } %>
+</div>
+

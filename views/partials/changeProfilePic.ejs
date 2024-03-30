@@ -1,0 +1,33 @@
+
+      <!-- Profile Picture -->
+      <!-- Modal -->
+      <div class="modal fade" id="profilePicture" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Hello, <%= user.fullname %>! Welcome to TribeSphere.</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/upload-profile-pic" enctype="multipart/form-data" method="post">
+              <div class="modal-body">
+                <h3>Add Profile Picture</h3>
+                <p>Upload a profile picture that reflects your essence.</p>
+                <div class="text-center py-3">
+                  <% if(user.profile_pic_url) {%>
+                  <img id="profile-photo" src="uploads/<%= user.profile_pic_url %>" style="height:150px ; width:150px ;" class="rounded-circle" alt="default-profile-pic">
+                  <% } else {%>
+                  <img id="profile-photo" src="images/profile-img.png" style="height:150px ; width:150px ;" class="rounded-circle" alt="default-profile-pic">
+                  <% } %>
+                </div>
+                <div class="text-center py-2">
+                  <input style="display: none;" type="file" id="profile-pic" name="profile-pic" onchange="previewImage('profile-pic','profile-photo')">
+                  <button class="signup-btn" style="width: 20%; margin-left: 40%;" type="button"><label for="profile-pic">Select</label></button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-success">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

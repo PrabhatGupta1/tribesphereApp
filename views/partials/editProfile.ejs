@@ -1,0 +1,36 @@
+<!-- edit profile -->
+      <!-- Modal -->
+      <div class="modal fade" id="edit-profile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Profile</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/edit-profile" method="post">
+              <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="fullname" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullname" name="fullname" value="<%= user.fullname %>" placeholder="Enter your full name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" value="<%= user.username %>" placeholder="" disabled>
+                  </div>
+                  <div class="mb-3">
+                    <label for="bio" class="form-label">Your Bio</label>
+                    <input type="text" class="form-control" id="bio" name="bio" value="<%= user.bio %>" placeholder="Enter your bio">
+                  </div>
+                  <div class="mb-3">
+                    <label for="mobile_no" class="form-label">Mobile No.</label>
+                    <input type="text" class="form-control" id="mobile_no" name="mobile_no" value="<%= user.mobile_no %>" placeholder="Enter your mobile no.">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

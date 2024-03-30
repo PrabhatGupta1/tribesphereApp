@@ -1,0 +1,34 @@
+<!-- suggested connections -->
+<div class="suggested-connections pt-3">
+    <p class="heading pb-0 mb-0">Suggested Connections</p>
+    <% if(locals.suggestedConnections && suggestedConnections.length>0) { %>
+      <% for(let i=0;i<suggestedConnections.length;i++) {%>
+        <%let bio = suggestedConnections[i].bio ; 
+          let profilePicUrl = suggestedConnections[i].profile_pic_url;
+          if(!profilePicUrl) {
+            profilePicUrl = "images/blank-profile-picture.png";
+          } else {
+            profilePicUrl = "uploads/"+profilePicUrl;
+          }
+          if(bio) {
+            if(bio.length>60) {
+              bio = bio.slice(0,60)+" . . .";
+            } 
+          } 
+        %>
+        <div class="user py-3">
+          <a href="profile?user=<%= suggestedConnections[i].username %>"><img src="<%= profilePicUrl %>" alt=""></a>
+          <p class="user-name"><%= suggestedConnections[i].fullname %></p>
+          <p class="user-headline pb-2"><%= bio %></p>
+          <button class="rounded request-button connect-btn" data-connection-id="<%= suggestedConnections[i].username %>" name="<%= suggestedConnections[i].username %>" type="button">+ Connect</button>
+        </div>
+      <% } %>
+    <% } else { %>
+      <div class="user py-3">
+        <p class="mx-3">Add hobbies and interests to show suggested connections</p>
+      </div>
+    <% } %>
+    <div class="show-more">
+      <p class="mb-0">Show More <img src="images/bottom-arrow.png" width="15px" alt=""></p>
+    </div>
+</div>

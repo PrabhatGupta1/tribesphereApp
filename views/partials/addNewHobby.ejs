@@ -1,0 +1,35 @@
+ <!-- add hobbies -->
+      <!-- Modal -->
+      <div class="modal fade" id="addHobby" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Hobbies</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/add-new" method="post">
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="new_passion" class="form-label">Add New Hobby</label>
+                  <input type="text" class="form-control" id="new_passion" name="new_passion" placeholder="" list="suggestions">
+                  <datalist id="suggestions">
+                    <% if(locals.hobbies) { %>
+                      <%  for(let i=0;i<hobbies.length;i++) { %>
+                          <option value="<%= hobbies[i].hobby %>">
+                      <% } %>  
+                    <% } %>
+                  </datalist>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Add description</label>
+                  <textarea class="form-control" id="description" name="description" rows="3" placeholder="comment on your this new passion..."></textarea>
+                  <input type="hidden" name="passion" value="hobby">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
